@@ -14,7 +14,13 @@ class App extends React.Component {
 
   numberClick = num => {
     const output = [...this.state.output];
-    this.setState({ output: [...output, num] });
+
+    if (output.length === 0 && num === "0") {
+      console.log(output.length, output[0], num);
+      this.setState({ output: [] });
+    } else {
+      this.setState({ output: [...output, num] });
+    }
   };
 
   operatorClick = operator => {
@@ -31,6 +37,7 @@ class App extends React.Component {
 
   calC = () => {
     let arrOutput = [...this.state.output].join("");
+
     let value = [];
     if (this.state.output.includes("+")) {
       let stringArr = arrOutput.split("+");
