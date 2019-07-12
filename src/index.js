@@ -31,25 +31,23 @@ class App extends React.Component {
 
   calC = () => {
     let arrOutput = [...this.state.output].join("");
-    let value;
+    let value = [];
     if (this.state.output.includes("+")) {
       let stringArr = arrOutput.split("+");
       let numArr = [Number(stringArr[0]), Number(stringArr[1])];
-      // this.setState({ output: numArr.reduce((a, b) => a + b) });
-      value = numArr.reduce((a, b) => a + b);
-      console.log(value);
+      value.push(numArr.reduce((a, b) => a + b));
     } else if (this.state.output.includes("-")) {
       let stringArr = arrOutput.split("-");
       let numArr = [Number(stringArr[0]), Number(stringArr[1])];
-      this.setState({ output: numArr.reduce((a, b) => a - b) });
+      value.push(numArr.reduce((a, b) => a - b));
     } else if (this.state.output.includes("/")) {
       let stringArr = arrOutput.split("/");
       let numArr = [Number(stringArr[0]), Number(stringArr[1])];
-      this.setState({ output: numArr.reduce((a, b) => a / b) });
+      value.push(numArr.reduce((a, b) => a / b));
     } else if (this.state.output.includes("*")) {
       let stringArr = arrOutput.split("*");
       let numArr = [Number(stringArr[0]), Number(stringArr[1])];
-      this.setState({ output: numArr.reduce((a, b) => a * b) });
+      value.push(numArr.reduce((a, b) => a * b));
     }
     return value;
   };
