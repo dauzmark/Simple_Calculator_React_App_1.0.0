@@ -7,7 +7,9 @@ export default class Numbers extends React.Component {
 
   render() {
     return (
-      <div style={{ width: "100px", backgroundColor: "pink", padding: "5px" }}>
+      <div
+        style={{ width: "100px", backgroundColor: "#b1b1b1", padding: "5px" }}
+      >
         {this.props.numbers.map(number => {
           return (
             <input
@@ -15,9 +17,11 @@ export default class Numbers extends React.Component {
               key={number}
               style={{
                 width: "30px",
-                backgroundColor: "blue",
-                color: "white",
-                marginBottom: "3px",
+                backgroundColor: "#fff",
+                color: "black",
+                border: "none",
+                margin: "1px",
+
                 textAlign: "center"
               }}
               type="submit"

@@ -5,7 +5,9 @@ export default class Operators extends React.Component {
   };
   render() {
     return (
-      <div style={{ width: "100px", backgroundColor: "pink", padding: "5px" }}>
+      <div
+        style={{ width: "100px", backgroundColor: "#b1b1b1", padding: "5px" }}
+      >
         {this.props.operators.map(operator => {
           return (
             <input
@@ -14,10 +16,11 @@ export default class Operators extends React.Component {
               onClick={this.handleClick}
               key={1 + Math.random()}
               style={{
-                width: "30px",
-                backgroundColor: "blue",
-                color: "white",
-                marginBottom: "3px",
+                width: "40px",
+                backgroundColor: "#fff",
+                color: "black",
+                border: "none",
+                margin: "1px",
                 textAlign: "center"
               }}
             />

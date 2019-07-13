@@ -8,21 +8,9 @@ import Output from "../public/Components/Output";
 class App extends React.Component {
   state = {
     numbers: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-    operators: [".", "+", "-", "/", "*", "=", "AC", "C", "CLR"],
-    // output: [],
+    operators: [".", "+", "-", "/", "*", "=", "C", "CLR"],
     output: [0]
   };
-
-  // numberClick = num => {
-  //   const output = [...this.state.output];
-
-  //   if (output.length === 0 && num === "0") {
-  //     console.log(output.length, output[0], num);
-  //     this.setState({ output: [] });
-  //   } else {
-  //     this.setState({ output: [...output, num] });
-  //   }
-  // };
 
   numberClick = num => {
     const output = [...this.state.output];
@@ -30,13 +18,15 @@ class App extends React.Component {
     if (output[0] === 0 && num !== "0") {
       this.setState({ output: num });
       console.log(output);
+    } else if (output[0] === 0 && num === "0") {
+      this.setState({ output: [0] });
     } else {
       this.setState({ output: [...output, num] });
     }
   };
 
   operatorClick = operator => {
-    if (operator === "AC" || operator === "C") {
+    if (operator === "C") {
       this.setState({ output: [0] });
     } else if (operator === "=") {
       let output = this.calC();
@@ -45,7 +35,6 @@ class App extends React.Component {
       const output = [...this.state.output];
       output.pop();
       if (output[0] === undefined) {
-        console.log(output[0]);
         this.setState({ output: [0] });
       } else {
         this.setState({ output: [...output] });
@@ -84,7 +73,7 @@ class App extends React.Component {
     return (
       <>
         <h1>Calculator</h1>
-        <div style={{ display: "flex", width: "30px" }}>
+        <div>
           <Output output={this.state.output} />
           <Numbers
             numbers={this.state.numbers}
