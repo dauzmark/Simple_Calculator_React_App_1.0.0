@@ -8,7 +8,7 @@ import Output from "../public/Components/Output";
 class App extends React.Component {
   state = {
     numbers: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-    operators: [".", "+", "-", "/", "*", "=", "AC", "C"],
+    operators: [".", "+", "-", "/", "*", "=", "AC", "C", "CLR"],
     // output: [],
     output: [0]
   };
@@ -28,8 +28,8 @@ class App extends React.Component {
     const output = [...this.state.output];
 
     if (output[0] === 0 && num !== "0") {
-      console.log(output.length, output[0], num);
       this.setState({ output: num });
+      console.log(output);
     } else {
       this.setState({ output: [...output, num] });
     }
@@ -41,6 +41,15 @@ class App extends React.Component {
     } else if (operator === "=") {
       let output = this.calC();
       this.setState({ output: output });
+    } else if (operator === "CLR") {
+      const output = [...this.state.output];
+      output.pop();
+      if (output[0] === undefined) {
+        console.log(output[0]);
+        this.setState({ output: [0] });
+      } else {
+        this.setState({ output: [...output] });
+      }
     } else {
       const output = [...this.state.output];
       this.setState({ output: [...output, operator] });
